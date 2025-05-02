@@ -12,7 +12,7 @@ const db = require('./config/keys').mongoURI;
 
 //Connect to MongoDB
 mongoose.connect(db)
-            .then(() => console.log('MongoDB Connected'))
+            .then(() => console.log('MongoDB Connected success'))
             .catch((err) => console.log(err))
 
 app.get('/', (req, res) => {
