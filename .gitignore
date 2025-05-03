@@ -1,0 +1,13 @@
+# Ignore node_modules and config inside the backend folder
+/backend/node_modules/
+
+/backend/config/
+
+# Ignore package-lock.json
+/backend/package-lock.json
+
+# Ignore common files/folders inside backend
+/backend/*.log
+/backend/.env
+/backend/dist/
+/backend/build/
