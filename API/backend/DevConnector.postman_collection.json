@@ -1,0 +1,698 @@
+{
+	"info": {
+		"_postman_id": "931837b6-5f6b-49f4-9c3d-ae531f7d918a",
+		"name": "DevConnector",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4736483"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"item": [
+				{
+					"name": "create-user-profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjQ1OTg3MiwiZXhwIjoxNzQ2NDYzNDcyfQ.6z63hceN8YkYarsy6al8qRkg9zySXMss3lCZGIO7KyM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "handle",
+									"value": "SarkerSafat",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Full Stack Developer",
+									"type": "text"
+								},
+								{
+									"key": "skills",
+									"value": "HTML, CSS, JS, PHP",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "TechnoNext",
+									"type": "text"
+								},
+								{
+									"key": "website",
+									"value": "www.sunzid.com",
+									"type": "text"
+								},
+								{
+									"key": "twitter",
+									"value": "http://twitter.com/SarkerSafat",
+									"type": "text"
+								},
+								{
+									"key": "facebook",
+									"value": "http://fb.com/SarkerSafat",
+									"type": "text"
+								},
+								{
+									"key": "instagram",
+									"value": "http://insta.com/SarkerSafat",
+									"type": "text"
+								},
+								{
+									"key": "githubusername",
+									"value": "safat02",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "I love to play music",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-user-experience",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjQ3ODA4NSwiZXhwIjoxNzQ2NDgxNjg1fQ.GL4JM0hED0ZSOud00xwuDAb-U8p5VqIQMfpaJg-Fw54",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "Software Engineer",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "Square Health Limited",
+									"type": "text"
+								},
+								{
+									"key": "from",
+									"value": "01.05.2023",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile/experience",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"experience"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-user-education",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjQ3ODA4NSwiZXhwIjoxNzQ2NDgxNjg1fQ.GL4JM0hED0ZSOud00xwuDAb-U8p5VqIQMfpaJg-Fw54",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "Software Engineer",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "Square Health Limited",
+									"type": "text"
+								},
+								{
+									"key": "from",
+									"value": "01.05.2023",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile/experience",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"experience"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "delete-user-experience",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjQ3ODA4NSwiZXhwIjoxNzQ2NDgxNjg1fQ.GL4JM0hED0ZSOud00xwuDAb-U8p5VqIQMfpaJg-Fw54",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "Software Engineer",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "Square Health Limited",
+									"type": "text"
+								},
+								{
+									"key": "from",
+									"value": "01.05.2023",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile/experience/68192b0b1ed27c9e2c403358",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"experience",
+								"68192b0b1ed27c9e2c403358"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-user-education",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjQ3ODA4NSwiZXhwIjoxNzQ2NDgxNjg1fQ.GL4JM0hED0ZSOud00xwuDAb-U8p5VqIQMfpaJg-Fw54",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "Software Engineer",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "Square Health Limited",
+									"type": "text"
+								},
+								{
+									"key": "from",
+									"value": "01.05.2023",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile/experience/68192b0b1ed27c9e2c403358",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"experience",
+								"68192b0b1ed27c9e2c403358"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-user-profile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTkyZWQwODA3ODViNDVhOGI4ZDA3NCIsIm5hbWUiOiJ0ZXN0IiwiYXZhdGFyIjoiLy93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci8xYWVkYjhkOWRjNDc1MWUyMjlhMzM1ZTM3MWRiODA1OD9zPTIwMCZyPXBnJmQ9bW0iLCJpYXQiOjE3NDY0ODA4ODAsImV4cCI6MTc0NjQ4NDQ4MH0.BDKRp7biTWGy0rcy8pkPmF0exscRmiFzdL-CTXP60TQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "Software Engineer",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "Square Health Limited",
+									"type": "text"
+								},
+								{
+									"key": "from",
+									"value": "01.05.2023",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "current-user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "techguyinfo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/users/current",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NDlhYTA5NWI2MDY4NWY3YTdiMSIsIm5hbWUiOiJTYXJrZXIgU3VuemlkIiwiYXZhdGFyIjoiLy93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci9kYjNkZmQxODE1ODAzNDc1NjhkYjYyYjA1NGIzZjVjNj9zPTIwMCZyPXBnJmQ9bW0iLCJpYXQiOjE3NDYzNzExODQsImV4cCI6MTc0NjM3NDc4NH0.J5WwgQHSZXbUTCwE7nJYWSask9trHSQlHKFXudK7LKw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "techguyinfo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile-by-handle",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NDlhYTA5NWI2MDY4NWY3YTdiMSIsIm5hbWUiOiJTYXJrZXIgU3VuemlkIiwiYXZhdGFyIjoiLy93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci9kYjNkZmQxODE1ODAzNDc1NjhkYjYyYjA1NGIzZjVjNj9zPTIwMCZyPXBnJmQ9bW0iLCJpYXQiOjE3NDYzNzExODQsImV4cCI6MTc0NjM3NDc4NH0.J5WwgQHSZXbUTCwE7nJYWSask9trHSQlHKFXudK7LKw",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "techguyinfo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile/handle/SarkerSunzid",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile",
+								"handle",
+								"SarkerSunzid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile-by-id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NDlhYTA5NWI2MDY4NWY3YTdiMSIsIm5hbWUiOiJTYXJrZXIgU3VuemlkIiwiYXZhdGFyIjoiLy93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci9kYjNkZmQxODE1ODAzNDc1NjhkYjYyYjA1NGIzZjVjNj9zPTIwMCZyPXBnJmQ9bW0iLCJpYXQiOjE3NDYzNzExODQsImV4cCI6MTc0NjM3NDc4NH0.J5WwgQHSZXbUTCwE7nJYWSask9trHSQlHKFXudK7LKw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "techguyinfo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-profile-all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NDlhYTA5NWI2MDY4NWY3YTdiMSIsIm5hbWUiOiJTYXJrZXIgU3VuemlkIiwiYXZhdGFyIjoiLy93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci9kYjNkZmQxODE1ODAzNDc1NjhkYjYyYjA1NGIzZjVjNj9zPTIwMCZyPXBnJmQ9bW0iLCJpYXQiOjE3NDYzNzExODQsImV4cCI6MTc0NjM3NDc4NH0.J5WwgQHSZXbUTCwE7nJYWSask9trHSQlHKFXudK7LKw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sarker Sunzid",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "techguyinfo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/profile",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-test",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user-registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Sarker Sunzid",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "techguyinfo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/api/users/register",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Sarker Sunzid",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "techguyinfo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:5000/api/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
