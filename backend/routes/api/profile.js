@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 // const keys = 
 
+
+const validateProfileInput =  require('../../validation/profile');
+
+
 //load profile model
 const Profile = require('../../models/Profile');
 
@@ -29,6 +33,7 @@ router.get('/', passport.authenticate('jwt', { session: false}), (req, res) => {
     const errors = {};
     
     Profile.findOne({ user: req.user.id })
+        .populate('user', ['name', 'avatar'])
         .then(profile => {
             if (!profile) {
                 errors.noprofile = 'No profile found for this user';
@@ -43,6 +48,17 @@ router.get('/', passport.authenticate('jwt', { session: false}), (req, res) => {
 // @desc   Create or Edit user profiles
 //@access  Private
 router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => {
+
+    //validation
+    const {errors, isValid } = validateProfileInput(req.body);
+
+    //check validation
+    if (!isValid) 
+    {
+        //return errors with 400
+        return res.status(400).json(errors);    
+    }
+
     //Get fields
     const profileFields = {};
 
@@ -112,13 +128,13 @@ router.post('/', passport.authenticate('jwt', { session: false}), (req, res) => 
                         if (profile) 
                         {
                             errors.handle = 'That handle already exist';
-                            res.status(400).json(erros)p;    
+                            res.status(400).json(errors);    
                         }
 
                         //save profile
                         new Profile(profileFields).save()
-                        .then(profile => res.json(profile))
-                        .catch(err => res.json(err))
+                            .then(profile => res.json(profile))
+                            .catch(err => res.json(err))
                     })
             }
         })
