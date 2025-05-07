@@ -614,6 +614,506 @@
 			]
 		},
 		{
+			"name": "Posts_by_user",
+			"item": [
+				{
+					"name": "user-status-posting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjYxNjkxMSwiZXhwIjoxNzQ2NjIwNTExfQ.-TRAo5weI4Fc_EiMGv1awJ3lukvLnivqx0E2y0QYsxg",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "Siuu",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "avatar",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "text",
+									"value": "This is a test status",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Siuu",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-all-posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjYxNjkxMSwiZXhwIjoxNzQ2NjIwNTExfQ.-TRAo5weI4Fc_EiMGv1awJ3lukvLnivqx0E2y0QYsxg",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "Siuu",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "avatar",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "text",
+									"value": "This is a test status",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Siuu",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-post-like",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjYxNjkxMSwiZXhwIjoxNzQ2NjIwNTExfQ.-TRAo5weI4Fc_EiMGv1awJ3lukvLnivqx0E2y0QYsxg",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "Siuu",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "avatar",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "text",
+									"value": "This is a test status",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Siuu",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/posts/like/681b4d0a0a4a801b560ddccd",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"like",
+								"681b4d0a0a4a801b560ddccd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-post-dislike",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjYyMzYyNCwiZXhwIjoxNzQ2NjI3MjI0fQ.jsnIEd4Q1zAicTd938M6znlD1mj_EQpDW2GFROuobDg",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "Siuu",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "avatar",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "text",
+									"value": "This is a test status",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Siuu",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/posts/unlike/681b4d0a0a4a801b560ddccd",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"unlike",
+								"681b4d0a0a4a801b560ddccd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-post-comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjYyNzg1MiwiZXhwIjoxNzQ2NjMxNDUyfQ.BXbgT9K8lynZdjAHKHHbDpWebZSDb74dqenjeYZmH7U",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "Siuu",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "avatar",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "text",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Siuu",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/posts/comment/681b4d0a0a4a801b560ddccd",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"comment",
+								"681b4d0a0a4a801b560ddccd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-delete-comment-from-posts",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjYyNzg1MiwiZXhwIjoxNzQ2NjMxNDUyfQ.BXbgT9K8lynZdjAHKHHbDpWebZSDb74dqenjeYZmH7U",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "Siuu",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "avatar",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "text",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Siuu",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/posts/comment/681b4d0a0a4a801b560ddccd/68168515a095b60685f7a7b5",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"comment",
+								"681b4d0a0a4a801b560ddccd",
+								"68168515a095b60685f7a7b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-single-post",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjYxNjkxMSwiZXhwIjoxNzQ2NjIwNTExfQ.-TRAo5weI4Fc_EiMGv1awJ3lukvLnivqx0E2y0QYsxg",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "Siuu",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "avatar",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "text",
+									"value": "This is a test status",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Siuu",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/posts/681b4d0a0a4a801b560ddccd",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"681b4d0a0a4a801b560ddccd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-single-post-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MTY4NTE1YTA5NWI2MDY4NWY3YTdiNSIsIm5hbWUiOiJTYXJrZXIgU2FmYXQiLCJhdmF0YXIiOiIvL3d3dy5ncmF2YXRhci5jb20vYXZhdGFyLzA3MjlmMTRkNDU2YWEzOGQwZDU5ODMyNGZmOGUyMzYwP3M9MjAwJnI9cGcmZD1tbSIsImlhdCI6MTc0NjYxOTYzMSwiZXhwIjoxNzQ2NjIzMjMxfQ.MF-vc9kcxWmcf-Kx2pTpNbbW_p2LmeELwdv3FVOwvZA",
+								"type": "text"
+							},
+							{
+								"key": "name",
+								"value": "Siuu",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "avatar",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "text",
+									"value": "This is a test status",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Siuu",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "avatar",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/api/posts/681b4d0a0a4a801b560ddccd",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"posts",
+								"681b4d0a0a4a801b560ddccd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "user-registration",
 			"request": {
 				"method": "POST",
