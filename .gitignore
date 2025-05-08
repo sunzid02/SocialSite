@@ -11,3 +11,27 @@
 /backend/.env
 /backend/dist/
 /backend/build/
+
+
+#FrontEnd part
+# dependencies
+/backend/my-app/node_modules
+/backend/my-app/.pnp
+/backend/my-app.pnp.js
+
+# testing
+/backend/my-app/coverage
+
+# production
+/backend/my-app/build
+
+# misc
+/backend/my-app/.DS_Store
+/backend/my-app/.env.local
+/backend/my-app/.env.development.local
+/backend/my-app/.env.test.local
+/backend/my-app/.env.production.local
+
+/backend/my-app/npm-debug.log*
+/backend/my-app/yarn-debug.log*
+/backend/my-app/yarn-error.log*

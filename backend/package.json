@@ -4,14 +4,18 @@
   "description": "devconnector socialSite backend codes",
   "main": "server.js",
   "scripts": {
+    "client-install": "npm install --prefix my-app",
     "start": "node server.js",
-    "server": "nodemon  server.js"
+    "server": "nodemon  server.js",
+    "client": "npm start --prefix my-app",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Sarker Sunzid Mahmud",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
+    "concurrently": "^9.1.2",
     "express": "^5.1.0",
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^9.0.2",
