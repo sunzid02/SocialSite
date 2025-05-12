@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { registerUser } from '../../actions/authActions';
 import { useNavigate } from "react-router-dom";
+import { registerUser } from '../../actions/authActions';
 
 
 
@@ -31,6 +31,13 @@ class Register extends Component {
     // binding
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    if (this.props.auth.isAuthenticated) 
+    {
+        this.props.navigate('/dashboard');
+    }
   }
 
   componentWillReceiveProps(nextProps){

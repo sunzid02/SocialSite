@@ -46,6 +46,13 @@ class Login extends Component {
     
   }
 
+  componentDidMount(){
+    if (this.props.auth.isAuthenticated) 
+    {
+        this.props.navigate('/dashboard');
+    }
+  }
+
   componentWillReceiveProps(nextProps){
 
     if (nextProps.auth.isAuthenticated) 

@@ -1,7 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+
+
+// Wrapper for class-based component to use useNavigate (React Router v6)
+function withRouter(Component) {
+  function ComponentWithRouterProp(props) {
+    const navigate = useNavigate();
+    return <Component {...props} navigate={navigate} />;
+  }
+  return ComponentWithRouterProp;
+}
+
 class Landing extends Component {
+  componentDidMount(){
+    if (this.props.auth.isAuthenticated) 
+    {
+        this.props.navigate('/dashboard');
+    }
+  }
+    
   render() {
     return (
       <div>
@@ -29,4 +51,15 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+
+Landing.propTypes = {
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,  //this state.auth is coming from our root reducer in this case authReducer
+  errors: state.errors
+});
+
+export default connect(mapStateToProps)(withRouter(Landing));
