@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
 // import { Link } from 'react-router-dom';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/authActions';
+import { useNavigate } from "react-router-dom";
+
+
+
+// Wrapper for class-based component to use useNavigate (React Router v6)
+function withRouter(Component) {
+  function ComponentWithRouterProp(props) {
+    const navigate = useNavigate();
+    return <Component {...props} navigate={navigate} />;
+  }
+  return ComponentWithRouterProp;
+}
 
 class Register extends Component {
   constructor(){
@@ -17,6 +31,12 @@ class Register extends Component {
     // binding
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors })
+    }
   }
 
   onChange(e){
@@ -35,9 +55,8 @@ class Register extends Component {
 
     console.log(newUser);
 
-    axios.post('/api/users/register', newUser)
-      .then(res => console.log(res.data) )
-      .catch(err => this.setState({errors: err.response.data }))
+    this.props.registerUser(newUser, this.props.navigate);
+
     
   }
 
@@ -45,8 +64,6 @@ class Register extends Component {
 
     // const errors = this.state.errors; same thing
     const { errors } = this.state;
-
-
 
     return (
       <div>
@@ -138,4 +155,16 @@ class Register extends Component {
   }
 }
 
-export default  Register;
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,  //this state.auth is coming from our root reducer in this case authReducer
+  errors: state.errors
+});
+
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+// export default Register;
