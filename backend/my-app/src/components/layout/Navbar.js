@@ -17,7 +17,11 @@ function withRouter(Component) {
 class Navbar extends Component {
   onLogoutClick(e){
     e.preventDefault();
-    this.props.logoutUser();
+    
+    const { logoutUser, navigate } = this.props;
+
+    // ✅ Pass navigate to the action
+    logoutUser(navigate);
   }
 
   render() {
@@ -50,7 +54,7 @@ class Navbar extends Component {
               <Link to='/login'>Login</Link>
           </li>
       </ul>
-  );
+    );
 
 
     return (
@@ -81,4 +85,5 @@ const mapStateToProps = (state) => ({
 });
 
 
-export default connect(mapStateToProps, { logoutUser})(withRouter(Navbar));
+// export default connect(mapStateToProps, { logoutUser})(Navbar);
+export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));

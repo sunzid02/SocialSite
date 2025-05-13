@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { registerUser } from '../../actions/authActions';
 
 
@@ -33,12 +33,6 @@ class Register extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentDidMount(){
-    if (this.props.auth.isAuthenticated) 
-    {
-        this.props.navigate('/dashboard');
-    }
-  }
 
   componentWillReceiveProps(nextProps){
     if (nextProps.errors) {
@@ -71,6 +65,12 @@ class Register extends Component {
 
     // const errors = this.state.errors; same thing
     const { errors } = this.state;
+    const { auth } = this.props;
+
+    // ✅ Redirect if authenticated
+    if (auth.isAuthenticated) {
+      return <Navigate to="/dashboard" replace />;
+    }
 
     return (
       <div>

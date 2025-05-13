@@ -3,7 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import classnames from 'classnames';
 
 // Wrapper for class-based component to use useNavigate (React Router v6)
@@ -46,28 +46,29 @@ class Login extends Component {
     
   }
 
-  componentDidMount(){
-    if (this.props.auth.isAuthenticated) 
-    {
-        this.props.navigate('/dashboard');
-    }
-  }
+  // componentDidMount() {
+  //   const { navigate, auth } = this.props;
+  //   if (auth.isAuthenticated) {
+  //     navigate('/dashboard');
+  //   }
+  // }
 
-  componentWillReceiveProps(nextProps){
-
-    if (nextProps.auth.isAuthenticated) 
-    { 
-      this.props.navigate('/dashboard')
-    }
-
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors })
+  componentDidUpdate(prevProps) {
+    const { errors } = this.props;
+    // Update state with errors if they change
+    if (errors !== prevProps.errors) {
+      this.setState({ errors });
     }
   }
 
   render() {
     const { errors } = this.state;
+    const { auth } = this.props;
 
+    // ✅ Redirect if authenticated
+    if (auth.isAuthenticated) {
+      return <Navigate to="/dashboard" replace />;
+    }
 
     return (
       <div>
@@ -137,6 +138,8 @@ const mapStateToProps = (state) => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { loginUser })(withRouter(Login));
+// export default connect(mapStateToProps, { loginUser })(Login);
 
+// ✅ Make sure to apply withRouter here
+export default connect(mapStateToProps, { loginUser })(withRouter(Login));
 // export default  Login;

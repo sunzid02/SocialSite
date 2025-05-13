@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 
 // Wrapper for class-based component to use useNavigate (React Router v6)
@@ -17,14 +17,21 @@ function withRouter(Component) {
 }
 
 class Landing extends Component {
-  componentDidMount(){
-    if (this.props.auth.isAuthenticated) 
-    {
-        this.props.navigate('/dashboard');
-    }
-  }
-    
+  // componentDidMount() {
+  //   const { auth, navigate } = this.props;
+  //   if (auth.isAuthenticated) {
+  //     navigate('/dashboard');
+  //   }
+  // }
+      
   render() {
+    const { auth } = this.props;
+
+    // ✅ Redirect if authenticated
+    if (auth.isAuthenticated) {
+      return <Navigate to="/dashboard" replace />;
+    }
+
     return (
       <div>
         <section className='landing'>
@@ -62,4 +69,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps)(withRouter(Landing));
+export default connect(mapStateToProps)(Landing);

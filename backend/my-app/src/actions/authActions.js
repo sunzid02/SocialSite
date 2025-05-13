@@ -3,6 +3,8 @@ import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 import setAuthToken from '../utils/setAuthToken';
 // ES6 Import (Recommended)
 import { jwtDecode } from 'jwt-decode';
+import { redirect } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 
 // Register User
@@ -62,7 +64,7 @@ export const setCurrentUser = (decoded) => {
 
 
 //Log user out
-export const logoutUser = () => dispatch => {
+export const logoutUser = (navigate = null) => dispatch => {
   //Remove the token from localStorage
   localStorage.removeItem('jwtToken');
 
@@ -70,5 +72,13 @@ export const logoutUser = () => dispatch => {
   setAuthToken(false);
 
   //Set current user to {} which will set isAuthenticated to false
-  dispatch(setCurrentUser({}))
+  dispatch(setCurrentUser({}));
+
+  // redirect to login page
+  
+  // ✅ Redirect user to login if navigate is provided
+  if (navigate) {
+    navigate("/login");
+  }
+
 }
