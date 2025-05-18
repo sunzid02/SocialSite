@@ -14,6 +14,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import CreateProfile from "./components/profile-forms/CreateProfile";
 
 
 
@@ -52,7 +53,7 @@ function App() {
           
           <main className="main-content">
             <Routes>
-              
+
               <Route path="/" element={<Landing />} />
               <Route path="/register" element={<Container><Register /></Container>} />
               <Route path="/login" element={<Container><Login /></Container>} />
@@ -61,6 +62,14 @@ function App() {
                 element={
                   <PrivateRoute>
                     <Dashboard />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/create-profile"
+                element={
+                  <PrivateRoute>
+                    <CreateProfile />
                   </PrivateRoute>
                 }
               />
