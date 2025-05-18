@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 import { registerUser } from '../../actions/authActions';
 
 
@@ -154,7 +154,7 @@ class Register extends Component {
               />
             </form>
           <p className="my-1">
-            Already have an account? <a href="/login">Sign In</a>
+            Already have an account?<Link to='/login'> Login</Link>
           </p>
         </section>
       </div>

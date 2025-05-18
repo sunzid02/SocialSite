@@ -72,9 +72,9 @@ class Navbar extends Component {
           <h1>
               <Link to="/"> <i className="fas fa-code"></i> DevConnector </Link>
           </h1>
-          <ul>
+          {/* <ul>
               <li><Link to="/profiles">Developers</Link></li>
-          </ul>
+          </ul> */}
 
           { isAuthenticated ? authLinks: guestLinks }   
         </nav>   

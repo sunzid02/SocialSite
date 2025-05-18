@@ -3,7 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 import classnames from 'classnames';
 
 // Wrapper for class-based component to use useNavigate (React Router v6)
@@ -119,7 +119,7 @@ class Login extends Component {
             </form>
 
             <p className="my-1">
-              Don't have an account? <a href="register.html">Sign Up</a>
+              Don't have an account?  <Link to='/register'>Register</Link>             
             </p>
         </section>
       </div>
