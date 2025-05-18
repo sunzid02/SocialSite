@@ -22,6 +22,7 @@ class Navbar extends Component {
 
     // ✅ Pass navigate to the action
     logoutUser(navigate);
+    // this.props.navigate('/login'); // Redirect from component, not inside action
   }
 
   render() {
@@ -31,17 +32,25 @@ class Navbar extends Component {
     const authLinks = (
       <ul>
         <li>
-          <a href="" onClick={this.onLogoutClick.bind(this)}>
-            <img 
+            <Link to='/dashboard'>
+             <i className='fa fa-user' />{' '}            
+             <span className='hide-sm'> Dashboard</span>
+            </Link>
+        </li>         
+        <li>
+          <a href="#" onClick={this.onLogoutClick.bind(this)}>
+            {/* <img 
               className='rounded-circle'
               src={user.avatar} 
               alt={user.name} 
               style={{ width: '25px', marginRight:'5px'}}
               title="You must have a Gravatar connected to your email to display an image">                   
-            </img>{' '}
-            Logout
+            </img>{' '} */}
+            {/* <i className='fas fa-sign-out-alt' />{' '} */}
+            <span className='hide-sm'> Logout</span>
           </a>
         </li>
+       
       </ul>      
     );
 

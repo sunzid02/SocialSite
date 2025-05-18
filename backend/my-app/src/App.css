@@ -615,5 +615,6 @@ button {
   flex: 1;
   padding-top: 60px;
   margin-top: 60px;
+  margin-left: 60px;
   /* adjust depending on navbar height */
 }

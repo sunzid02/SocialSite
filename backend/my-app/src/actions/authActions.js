@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { CLEAR_PROFILE, GET_ERRORS, SET_CURRENT_USER } from "./types";
 import setAuthToken from '../utils/setAuthToken';
 // ES6 Import (Recommended)
 import { jwtDecode } from 'jwt-decode';
@@ -78,7 +78,14 @@ export const logoutUser = (navigate = null) => dispatch => {
   
   // ✅ Redirect user to login if navigate is provided
   if (navigate) {
-    navigate("/login");
+    // Small delay before navigating
+    setTimeout(() => {
+      navigate("/login");
+    }, 0); // minimal delay to allow cleanup
   }
+
+  dispatch({
+    type: CLEAR_PROFILE
+  });
 
 }
