@@ -12,6 +12,10 @@ import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./components/routing/PrivateRoute";
+
+
 
 
 //check for token
@@ -39,18 +43,30 @@ if (localStorage.jwtToken) {
   }
 }
 
-
 function App() {
   return (
-    <Provider store={ store }>
+    <Provider store={store}>
       <Router>
-        <div className="App">
+        <div className="app-wrapper">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route path="/register" element={<Container><Register /></Container>} />
-            <Route path="/login" element={<Container><Login /></Container>} />
-          </Routes>
+          
+          <main className="main-content">
+            <Routes>
+              
+              <Route path="/" element={<Landing />} />
+              <Route path="/register" element={<Container><Register /></Container>} />
+              <Route path="/login" element={<Container><Login /></Container>} />
+              <Route
+                path="/dashboard"
+                element={
+                  <PrivateRoute>
+                    <Dashboard />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </main>
+
           <Footer />
         </div>
       </Router>
