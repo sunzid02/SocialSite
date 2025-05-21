@@ -1,8 +1,31 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
+import { createProfile } from '../../actions/profileAction';
 
-const CreateProfile = props => {
+import { useNavigate, Navigate, Link } from "react-router-dom";
+
+// Wrapper for class-based component to use useNavigate (React Router v6)
+function withRouter(Component) {
+  function ComponentWithRouterProp(props) {
+    const navigate = useNavigate();
+    return <Component {...props} navigate={navigate} />;
+  }
+  return ComponentWithRouterProp;
+}
+
+
+const CreateProfile = ({ createProfile, history, errors: reduxErrors }) => {
+
+    const [errors, setErrors] = useState({});    
+    
+    useEffect(() => {
+      console.log('reduxErrors:', reduxErrors);
+      if (reduxErrors) {
+        setErrors(reduxErrors);
+      }
+    }, [reduxErrors]);
+
     const [formData, setFromData ] = useState({
         company: '',
         website: '',
@@ -35,6 +58,14 @@ const CreateProfile = props => {
         instagram
     } = formData;
 
+    const onSubmit = e => {
+      e.preventDefault();
+      console.log('history:', history);
+
+      createProfile(formData, history)
+    }
+
+
 
     const onChange = e => setFromData({...formData, [e.target.name]: e.target.value});
     
@@ -48,9 +79,14 @@ const CreateProfile = props => {
         profile stand out
       </p>
       <small>* = required fields</small>
-      <form className="form">
+      <form className="form" onSubmit={e => onSubmit(e)}>
         <div className="form-group">
-          <select name="status" value={status} onChange={(e) => onChange(e)}>
+          <select 
+            name="status" 
+            value={status} 
+            onChange={(e) => onChange(e)}
+            className={errors.status ? 'form-control is-invalid' : 'form-control'}
+          >
             <option value="0">* Select Professional Status</option>
             <option value="Developer">Developer</option>
             <option value="Junior Developer">Junior Developer</option>
@@ -64,6 +100,8 @@ const CreateProfile = props => {
           <small className="form-text"
             >Give us an idea of where you are at in your career</small
           >
+          {errors.status && <div className="invalid-feedback">{errors.status}</div>}
+
         </div>
         <div className="form-group">
           <input type="text" placeholder="Company" name="company" value={company} onChange={(e) => onChange(e)} />
@@ -119,7 +157,7 @@ const CreateProfile = props => {
             <Fragment>
                 <div className="form-group social-input">
                     <i className="fab fa-twitter fa-2x"></i>
-                    <input type="text" placeholder="Twitter URL" name="twitter"  value={bio} onChange={(e) => onChange(e)} />
+                    <input type="text" placeholder="Twitter URL" name="twitter"  value={twitter} onChange={(e) => onChange(e)} />
                 </div>
 
                 <div className="form-group social-input">
@@ -145,14 +183,21 @@ const CreateProfile = props => {
 
 
         <input type="submit" className="btn btn-primary my-1" />
-        <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
+        <Link className="btn btn-primary my-1" to='/dashboard'>Go Back</Link>
       </form>      
     </Fragment>
   )
-}
+};
 
 CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+};
 
-}
+const mapStateToProps = (state) => ({
+  auth: state.auth,  //this state.auth is coming from our root reducer in this case authReducer
+  errors: state.errors
+});
 
-export default CreateProfile
+{/* export default connect(null, { createProfile })(withRouter(CreateProfile)); */}
+{/* export default withRouter(connect(null, { createProfile })(CreateProfile)); */}
+export default withRouter(connect(mapStateToProps, { createProfile })(CreateProfile));

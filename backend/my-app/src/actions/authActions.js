@@ -17,7 +17,9 @@ export const registerUser = (userData, navigate) => dispatch => {
           type: GET_ERRORS,
           payload: err.response.data
         });
-      } else {
+      } 
+      else 
+      {
         console.error("Network Error or Server Error", err);
         dispatch({
           type: GET_ERRORS,
