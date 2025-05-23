@@ -29,41 +29,41 @@ export const getCurrentProfile = () => async dispatch => {
 
 //Create or update profile
 export const createProfile =
-  (formData, navigate, edit = false) =>
-  async (dispatch) => {
-    try {
-      const res = await axios.post('/api/profile', formData);
+(formData, navigate, edit = false) =>
+async (dispatch) => {
+  try {
+    const res = await axios.post('/api/profile', formData);
 
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      });
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
 
-      dispatch(
-        setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success')
-      );
+    dispatch(
+      setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success')
+    );
 
-      if (!edit) {
-        navigate('/dashboard');
-      }
-
-    } 
-    catch (err) {
-      const errors = err.response.data;
-
-      if (errors && typeof errors === 'object') {
-        Object.values(errors).forEach((msg) =>
-          dispatch(setAlert(msg, 'danger'))            
-        );
-      }
-      // dispatch({
-      //   type: GET_ERRORS,
-      //   payload: err.response.data
-      // });
-
-      dispatch({
-        type: PROFILE_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status }
-      });
+    if (!edit) {
+      navigate('/dashboard');
     }
-  };
+
+  } 
+  catch (err) {
+    const errors = err.response.data;
+
+    if (errors && typeof errors === 'object') {
+      Object.values(errors).forEach((msg) =>
+        dispatch(setAlert(msg, 'danger'))            
+      );
+    }
+    // dispatch({
+    //   type: GET_ERRORS,
+    //   payload: err.response.data
+    // });
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

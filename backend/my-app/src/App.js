@@ -16,6 +16,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import CreateProfile from "./components/profile-forms/CreateProfile";
 import Alert from "./components/layout/Alert";
+import EditProfile from "./components/profile-forms/EditProfile";
 
 
 
@@ -71,6 +72,14 @@ function App() {
                 element={
                   <PrivateRoute>
                     <CreateProfile />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/edit-profile"
+                element={
+                  <PrivateRoute>
+                    <EditProfile />
                   </PrivateRoute>
                 }
               />
