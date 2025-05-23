@@ -14,19 +14,30 @@ function withRouter(Component) {
   return ComponentWithRouterProp;
 }
 
+//errors is coming from props, then we rename it to reduxErrors
+const CreateProfile = ({ createProfile, errors: reduxErrors, auth: { user } }) => {
 
-const CreateProfile = ({ createProfile, history, errors: reduxErrors }) => {
-
+    //errors is local state here
     const [errors, setErrors] = useState({});    
+    const navigate = useNavigate();
+
     
+    
+    //redux e store update hoile, eikhaner local  errorState er value redux er global reduxError object diye update kore ditasi
     useEffect(() => {
       console.log('reduxErrors:', reduxErrors);
       if (reduxErrors) {
         setErrors(reduxErrors);
       }
-    }, [reduxErrors]);
+
+      if (user?.name) {
+        setFromData(prev => ({ ...prev, handle: user.name }));
+      }
+
+    }, [reduxErrors, user]);
 
     const [formData, setFromData ] = useState({
+       'handle': '',
         company: '',
         website: '',
         location: '',
@@ -44,6 +55,7 @@ const CreateProfile = ({ createProfile, history, errors: reduxErrors }) => {
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
   
     const {
+        handle,
         company,
         website,
         location,
@@ -55,14 +67,13 @@ const CreateProfile = ({ createProfile, history, errors: reduxErrors }) => {
         facebook,
         linkedin,
         youtube,
-        instagram
+        instagram,
     } = formData;
 
     const onSubmit = e => {
       e.preventDefault();
-      console.log('history:', history);
 
-      createProfile(formData, history)
+      createProfile(formData, navigate)
     }
 
 
@@ -80,6 +91,10 @@ const CreateProfile = ({ createProfile, history, errors: reduxErrors }) => {
       </p>
       <small>* = required fields</small>
       <form className="form" onSubmit={e => onSubmit(e)}>
+        <input type="hidden" 
+          name="handle"
+          value={handle}
+        />
         <div className="form-group">
           <select 
             name="status" 
@@ -97,10 +112,15 @@ const CreateProfile = ({ createProfile, history, errors: reduxErrors }) => {
             <option value="Intern">Intern</option>
             <option value="Other">Other</option>
           </select>
+          { 
+            errors.status && 
+            <div className="invalid-feedback">
+              {errors.status}
+            </div>
+          }
           <small className="form-text"
             >Give us an idea of where you are at in your career</small
           >
-          {errors.status && <div className="invalid-feedback">{errors.status}</div>}
 
         </div>
         <div className="form-group">
@@ -122,12 +142,26 @@ const CreateProfile = ({ createProfile, history, errors: reduxErrors }) => {
           >
         </div>
         <div className="form-group">
-          <input type="text" placeholder="* Skills" name="skills"  value={skills} onChange={(e) => onChange(e)} />
+          <input type="text" placeholder="* Skills"
+             name="skills"  
+            value={skills} 
+            onChange={(e) => onChange(e)} 
+            className={errors.skills ? 'form-control is-invalid' : 'form-control'}
+
+          />
+          { 
+            errors.skills && 
+            <div className="invalid-feedback">
+              {errors.skills}
+            </div>
+          }
           <small className="form-text"
             >Please use comma separated values (eg.
             HTML,CSS,JavaScript,PHP)</small
           >
+
         </div>
+
         <div className="form-group">
           <input
             type="text"

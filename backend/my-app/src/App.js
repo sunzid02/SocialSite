@@ -15,6 +15,7 @@ import Login from './components/auth/Login';
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import CreateProfile from "./components/profile-forms/CreateProfile";
+import Alert from "./components/layout/Alert";
 
 
 
@@ -50,7 +51,7 @@ function App() {
       <Router>
         <div className="app-wrapper">
           <Navbar />
-          
+          <Alert />
           <main className="main-content">
             <Routes>
 

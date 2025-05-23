@@ -29,7 +29,7 @@ export const getCurrentProfile = () => async dispatch => {
 
 //Create or update profile
 export const createProfile =
-  (formData, edit = false) =>
+  (formData, navigate, edit = false) =>
   async (dispatch) => {
     try {
       const res = await axios.post('/api/profile', formData);
@@ -43,30 +43,23 @@ export const createProfile =
         setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success')
       );
 
+      if (!edit) {
+        navigate('/dashboard');
+      }
+
     } 
     catch (err) {
       const errors = err.response.data;
-
-      console.log(err);
-      
-
-    //   if (errors) {
-    //     console.log('setAlert: ', setAlert);
-        
-    //     errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    //   }
 
       if (errors && typeof errors === 'object') {
         Object.values(errors).forEach((msg) =>
           dispatch(setAlert(msg, 'danger'))            
         );
       }
-
-
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      });
+      // dispatch({
+      //   type: GET_ERRORS,
+      //   payload: err.response.data
+      // });
 
       dispatch({
         type: PROFILE_ERROR,
