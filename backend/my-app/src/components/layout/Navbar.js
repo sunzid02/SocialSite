@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/authActions';
+import { logoutUser } from '../../actions/authActions';
 import { useNavigate } from "react-router-dom";
+import { clearCurrentProfile } from '../../actions/profileAction';
 
 // Wrapper for class-based component to use useNavigate (React Router v6)
 function withRouter(Component) {
@@ -17,12 +18,8 @@ function withRouter(Component) {
 class Navbar extends Component {
   onLogoutClick(e){
     e.preventDefault();
-    
-    const { logout, navigate } = this.props;
-
-    // ✅ Pass navigate to the action
-    logout(navigate);
-    // this.props.navigate('/login'); // Redirect from component, not inside action
+    this.props.clearCurrentProfile();
+    this.props.logoutUser();
   }
 
   render() {
@@ -85,7 +82,7 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  logout: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 }
 
@@ -95,4 +92,7 @@ const mapStateToProps = (state) => ({
 
 
 // export default connect(mapStateToProps, { logout})(Navbar);
-export default connect(mapStateToProps, { logout })(withRouter(Navbar));
+// export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(withRouter(Navbar));
+export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(
+  Navbar
+);

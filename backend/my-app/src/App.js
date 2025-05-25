@@ -1,10 +1,12 @@
+import { Component } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './store'; // ✅ Default import
 import { jwtDecode } from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { logout, setCurrentUser } from "./actions/authActions";
+import { logoutUser, setCurrentUser } from "./actions/authActions";
 
+import PrivateRoute from './components/common/PrivateRoute';
 
 import './App.css';
 import Footer from './components/layout/Footer';
@@ -13,12 +15,12 @@ import Navbar from './components/layout/Navbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Dashboard from "./components/dashboard/Dashboard";
-import PrivateRoute from "./components/routing/PrivateRoute";
+
 import CreateProfile from "./components/profile-forms/CreateProfile";
-import Alert from "./components/layout/Alert";
 import EditProfile from "./components/profile-forms/EditProfile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
+import Alert from "./components/layout/Alert";
 
 
 
@@ -39,7 +41,7 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) 
   {
     //logout user
-     store.dispatch(logout);
+     store.dispatch(logoutUser());
 
      //Clear the current profile
 
@@ -48,85 +50,38 @@ if (localStorage.jwtToken) {
   }
 }
 
-function App() {
-  return (
-    <Provider store={store}>
-      <Router>
-        <div className="app-wrapper">
-          <Navbar />
-          <Alert />
-          <main className="main-content">
-            <Routes>
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Router>
+          <div className="app-wrapper">
+            <Navbar />
+            <Alert />
+            
+            <main className="main-content">
+              <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
 
-              <Route path="/" element={<Landing />} />
-              <Route path="/register" element={<Container><Register /></Container>} />
-              <Route path="/login" element={<Container><Login /></Container>} />
+                {/* All private routes go under this */}
+                <Route element={<PrivateRoute />}>
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/create-profile" element={<CreateProfile />} />
+                  <Route path="/edit-profile" element={<EditProfile />} />
+                  <Route path="/add-experience" element={<AddExperience />} />
+                  <Route path="/add-education" element={<AddEducation />} />
+                </Route>
+              </Routes>
+            </main>
 
-              
-              {/* dashboard */}
-              <Route
-                path="/dashboard"
-                element={
-                  <PrivateRoute>
-                    <Dashboard />
-                  </PrivateRoute>
-                }
-              />
-
-              {/* create profile */}
-              <Route
-                path="/create-profile"
-                element={
-                  <PrivateRoute>
-                    <CreateProfile />
-                  </PrivateRoute>
-                }
-              />
-
-              {/* edit profile */}
-              <Route
-                path="/edit-profile"
-                element={
-                  <PrivateRoute>
-                    <EditProfile />
-                  </PrivateRoute>
-                }
-              />
-
-              {/* add experience */}
-              <Route
-                path="/add-experience"
-                element={
-                  <PrivateRoute>
-                    <AddExperience />
-                  </PrivateRoute>
-                }
-              />
-
-              {/* add education */}
-              <Route
-                path="/add-education"
-                element={
-                  <PrivateRoute>
-                    <AddEducation />
-                  </PrivateRoute>
-                }
-              />
-
-
-            </Routes>
-          </main>
-
-          <Footer />
-        </div>
-      </Router>
-    </Provider>
-  );
-}
-
-
-function Container({ children }) {
-  return <div className='container'>{children}</div>;
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
+    );
+  }
 }
 
 export default App;
