@@ -133,7 +133,7 @@ img {
 }
 
 .my-2 {
-  margin: 2rem 0;
+  margin: 1.5rem 0 !important;
 }
 
 .my-3 {
@@ -628,4 +628,8 @@ button {
 
 .edit-profile-form, .create-profile-form, .add-experience-form, .add-education-form {
   width: 50%;
+}
+
+.experience-table, .education-table{
+  width: 80%
 }
