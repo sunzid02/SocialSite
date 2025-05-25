@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import store from './store'; // ✅ Default import
 import { jwtDecode } from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { logoutUser, setCurrentUser } from "./actions/authActions";
+import { logout, setCurrentUser } from "./actions/authActions";
 
 
 import './App.css';
@@ -17,6 +17,8 @@ import PrivateRoute from "./components/routing/PrivateRoute";
 import CreateProfile from "./components/profile-forms/CreateProfile";
 import Alert from "./components/layout/Alert";
 import EditProfile from "./components/profile-forms/EditProfile";
+import AddExperience from "./components/profile-forms/AddExperience";
+import AddEducation from "./components/profile-forms/AddEducation";
 
 
 
@@ -37,7 +39,7 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) 
   {
     //logout user
-     store.dispatch(logoutUser);
+     store.dispatch(logout);
 
      //Clear the current profile
 
@@ -59,6 +61,9 @@ function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/register" element={<Container><Register /></Container>} />
               <Route path="/login" element={<Container><Login /></Container>} />
+
+              
+              {/* dashboard */}
               <Route
                 path="/dashboard"
                 element={
@@ -67,6 +72,8 @@ function App() {
                   </PrivateRoute>
                 }
               />
+
+              {/* create profile */}
               <Route
                 path="/create-profile"
                 element={
@@ -75,6 +82,8 @@ function App() {
                   </PrivateRoute>
                 }
               />
+
+              {/* edit profile */}
               <Route
                 path="/edit-profile"
                 element={
@@ -83,6 +92,28 @@ function App() {
                   </PrivateRoute>
                 }
               />
+
+              {/* add experience */}
+              <Route
+                path="/add-experience"
+                element={
+                  <PrivateRoute>
+                    <AddExperience />
+                  </PrivateRoute>
+                }
+              />
+
+              {/* add education */}
+              <Route
+                path="/add-education"
+                element={
+                  <PrivateRoute>
+                    <AddEducation />
+                  </PrivateRoute>
+                }
+              />
+
+
             </Routes>
           </main>
 

@@ -99,14 +99,14 @@ const EditProfile = ({ profile:{ profile, loading }, createProfile, errors: redu
     return (
     <Fragment>
       <h1 className="large text-primary">
-        Create Your Profile
+        Edit Your Profile
       </h1>
       <p className="lead">
         <i className="fas fa-user"></i> Let's get some information to make your
         profile stand out
       </p>
       <small>* = required fields</small>
-      <form className="form" onSubmit={e => onSubmit(e)}>
+      <form className="form edit-profile-form" onSubmit={e => onSubmit(e)}>
         <input type="hidden" 
           name="handle"
           value={handle}

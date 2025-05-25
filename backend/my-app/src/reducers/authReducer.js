@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from "../actions/types";
+import { SET_CURRENT_USER, LOGOUT } from "../actions/types";
 import isEmpty from "../validation/is-empty";
 
 
@@ -17,6 +17,15 @@ export default function(state= initialState, action){
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload
             }
+
+        case LOGOUT:
+            return {
+                ...state,
+                token: null,
+                isAuthenticated: false,
+                loading: false,
+                user: null
+            };            
     
         default:
             return state;

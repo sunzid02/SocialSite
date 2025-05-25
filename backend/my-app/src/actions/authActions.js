@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CLEAR_PROFILE, GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { CLEAR_PROFILE, GET_ERRORS, SET_CURRENT_USER, LOGOUT } from "./types";
 import setAuthToken from '../utils/setAuthToken';
 // ES6 Import (Recommended)
 import { jwtDecode } from 'jwt-decode';
@@ -66,28 +66,30 @@ export const setCurrentUser = (decoded) => {
 
 
 //Log user out
-export const logoutUser = (navigate = null) => dispatch => {
-  //Remove the token from localStorage
-  localStorage.removeItem('jwtToken');
+// export const logoutUser = (navigate = null) => dispatch => {
+//   //Remove the token from localStorage
+//   localStorage.removeItem('jwtToken');
 
-  //Remove auth header for future requests
-  setAuthToken(false);
+//   //Remove auth header for future requests
+//   setAuthToken(false);
 
-  //Set current user to {} which will set isAuthenticated to false
-  dispatch(setCurrentUser({}));
+//   //Set current user to {} which will set isAuthenticated to false
+//   dispatch(setCurrentUser({}));
 
-  // redirect to login page
+//   // redirect to login page
   
-  // ✅ Redirect user to login if navigate is provided
-  if (navigate) {
-    // Small delay before navigating
-    setTimeout(() => {
-      navigate("/login");
-    }, 0); // minimal delay to allow cleanup
-  }
+//   // ✅ Redirect user to login if navigate is provided
+//   if (navigate) {
+//     // Small delay before navigating
+//     setTimeout(() => {
+//       navigate("/login");
+//     }, 0); // minimal delay to allow cleanup
+//   }
 
-  dispatch({
-    type: CLEAR_PROFILE
-  });
+//   dispatch({
+//     type: CLEAR_PROFILE
+//   });
 
-}
+// }
+// Logout
+export const logout = () => ({ type: LOGOUT });

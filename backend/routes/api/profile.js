@@ -250,6 +250,9 @@ router.post('/experience', passport.authenticate('jwt', {session: false}), (req,
 router.post('/education', passport.authenticate('jwt', {session: false}), (req, res) => {
     //validation    
     const {errors, isValid } = validateEducationInput(req.body);
+    
+    console.log(req.body);
+    
 
     //check validation
     if (!isValid) 

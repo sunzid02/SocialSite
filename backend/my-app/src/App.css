@@ -625,3 +625,7 @@ button {
   margin-left: 60px;
   /* adjust depending on navbar height */
 }
+
+.edit-profile-form, .create-profile-form, .add-experience-form, .add-education-form {
+  width: 50%;
+}

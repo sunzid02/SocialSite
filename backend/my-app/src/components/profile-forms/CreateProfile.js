@@ -31,12 +31,12 @@ const CreateProfile = ({ createProfile, errors: reduxErrors, auth: { user } }) =
       }
 
       if (user?.name) {
-        setFromData(prev => ({ ...prev, handle: user.name }));
+        setFormData(prev => ({ ...prev, handle: user.name }));
       }
 
     }, [reduxErrors, user]);
 
-    const [formData, setFromData ] = useState({
+    const [formData, setFormData ] = useState({
        'handle': '',
         company: '',
         website: '',
@@ -78,7 +78,7 @@ const CreateProfile = ({ createProfile, errors: reduxErrors, auth: { user } }) =
 
 
 
-    const onChange = e => setFromData({...formData, [e.target.name]: e.target.value});
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
     
     return (
     <Fragment>
@@ -90,7 +90,7 @@ const CreateProfile = ({ createProfile, errors: reduxErrors, auth: { user } }) =
         profile stand out
       </p>
       <small>* = required fields</small>
-      <form className="form" onSubmit={e => onSubmit(e)}>
+      <form className="form create-profile-form" onSubmit={e => onSubmit(e)}>
         <input type="hidden" 
           name="handle"
           value={handle}
