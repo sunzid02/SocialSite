@@ -15,6 +15,7 @@ const Profile = require('../../models/Profile');
 
 //load User model
 const User = require('../../models/User');
+const Post = require('../../models/Post');
 
 
 // @route  GET api/profile/test
@@ -328,21 +329,26 @@ router.delete('/education/:education_id', passport.authenticate('jwt', {session:
         .catch(err => res.json(err))
 });
 
-// @route  DELETE api/profile
-// @desc   DELETE user and profile
-//@access  Private
-router.delete('/', passport.authenticate('jwt', {session: false}), (req, res) => {
-
-    Profile.findOne({ user: req.user.id })
-        .then(profile => {
-            Profile.findOneAndDelete({ user: req.user.id })
-                .then(() => {
-                    User.findOneAndDelete({_id: req.user.id })
-                        .then(() => res.json({success: true }))
-                })
-        })
-        .catch(err => res.json(err))
-});
+// @route   DELETE api/profile
+// @desc    Delete user and profile
+// @access  Private
+router.delete('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
+    try {
+      // Delete all posts by the user
+      await Post.deleteMany({ user: req.user.id });
+  
+      // Delete the user's profile
+      await Profile.findOneAndDelete({ user: req.user.id });
+  
+      // Delete the user account
+      await User.findOneAndDelete({ _id: req.user.id });
+  
+      res.json({ success: true });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Server error' });
+    }
+  });
 
 
 module.exports = router;

@@ -2,8 +2,10 @@ import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import dayjs from 'dayjs';
+import { deleteEducation } from '../../actions/profileAction';
 
-const Education = ({ education }) => {
+
+const Education = ({ education, deleteEducation }) => {
     
     const educations = education.map(edu => (
         <tr key={edu._id}>
@@ -21,7 +23,7 @@ const Education = ({ education }) => {
 
 
             <td>
-                <button className="btn btn-danger">Delete</button>
+                <button className="btn btn-danger" onClick={() => deleteEducation(edu._id)}>Delete</button>
             </td>
         </tr>
     ));
@@ -52,4 +54,4 @@ Education.propTypes = {
     education: PropTypes.array.isRequired,
 }
 
-export default Education
+export default connect(null, {deleteEducation}) (Education);
