@@ -30,11 +30,23 @@ class Navbar extends Component {
               Dashboard
             </Link>
           </li>
-          <li>
-            <a
-              href=""
+          <li  style={{ 
+                'margin-top': '6px', 
+              }}
+              >
+            <button
               onClick={this.onLogoutClick.bind(this)}
-              className="nav-link"
+              className="btn btn-link nav-link p-0"
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                padding: 0, 
+                color: 'inherit', 
+                textDecoration: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center'
+              }}
             >
               <img
                 className="rounded-circle"
@@ -42,10 +54,11 @@ class Navbar extends Component {
                 alt={user.name}
                 style={{ width: '25px', marginRight: '5px' }}
                 title="You must have a Gravatar connected to your email to display an image"
-              />{' '}
+              />
               Logout
-            </a>
+            </button>
           </li>
+
         </ul>
       );
   

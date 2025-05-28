@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profileAction';
 
-import { useNavigate, Navigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // Wrapper for class-based component to use useNavigate (React Router v6)
 function withRouter(Component) {
@@ -18,7 +18,7 @@ function withRouter(Component) {
 const EditProfile = ({ profile:{ profile, loading }, createProfile, errors: reduxErrors, auth: { user }, getCurrentProfile }) => {
 
     //errors is local state here
-    const [errors, setErrors] = useState({});    
+    const [errors] = useState({});    
     const navigate = useNavigate();
 
     const [formData, setFromData ] = useState({
@@ -40,34 +40,52 @@ const EditProfile = ({ profile:{ profile, loading }, createProfile, errors: redu
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
     //redux e store update hoile, eikhaner local  errorState er value redux er global reduxError object diye update kore ditasi
+    // 1. Fetch profile on mount
     useEffect(() => {
-        console.log('reduxErrors:', reduxErrors);
-        // if (reduxErrors) {
-        //   setErrors(reduxErrors);
-        // }
+      getCurrentProfile();
+    }, [getCurrentProfile]);
 
-        getCurrentProfile();
+    // 2. Update local form state when profile or loading changes
+    //"Jokhon profile or user.name change hoy, tokhon amra form er sob gulo field abar update kori – jate form e latest data dekha jai."
+    useEffect(() => {
+      setFromData({
+        handle: user?.name || '',
+        company: loading || !profile?.company ? '' : profile.company,
+        website: loading || !profile?.website ? '' : profile.website,
+        location: loading || !profile?.location ? '' : profile.location,
+        status: loading || !profile?.status ? '' : profile.status,
+        skills: loading || !profile?.skills ? '' : profile.skills.join(','),
+        githubusername: loading || !profile?.githubusername ? '' : profile.githubusername,
+        bio: loading || !profile?.bio ? '' : profile.bio,
+        twitter: profile?.social?.twitter || '',
+        facebook: profile?.social?.facebook || '',
+        linkedin: profile?.social?.linkedin || '',
+        youtube: profile?.social?.youtube || '',
+        instagram: profile?.social?.instagram || '',
+      });
+    }, [
+      loading,
+      profile?.company,
+      profile?.website,
+      profile?.location,
+      profile?.status,
+      profile?.skills,
+      profile?.githubusername,
+      profile?.bio,
+      profile?.social?.twitter,
+      profile?.social?.facebook,
+      profile?.social?.linkedin,
+      profile?.social?.youtube,
+      profile?.social?.instagram,
+      user?.name
+    ]);
 
-        setFromData({
-            company: loading || !profile.company ? '' : profile.company,
-            website: loading || !profile.website ? '' : profile.website,
-            location: loading || !profile.location ? '' : profile.location,
-            status: loading || !profile.status ? '' : profile.status,
-            skills: loading || !profile.skills ? '' : profile.skills.join(','),
-            githubusername: loading || !profile.githubusername ? '' : profile.githubusername,
-            bio: loading || !profile.bio ? '' : profile.bio,
-            twitter: loading || !profile.social.twitter ? '' : profile.social.twitter,
-            facebook: loading || !profile.social.facebook ? '' : profile.social.facebook,
-            linkedin: loading || !profile.social.linkedin ? '' : profile.social.linkedin,
-            youtube: loading || !profile.social.youtube ? '' : profile.social.youtube,
-            instagram: loading || !profile.social.instagram ? '' : profile.social.instagram
-        }, [loading]);
-  
-        if (user?.name) {
-          setFromData(prev => ({ ...prev, handle: user.name }));
-        }
-  
-      }, [reduxErrors, user]);
+    // 3. Update handle from user.name
+    useEffect(() => {
+      if (user?.name) {
+        setFromData((prev) => ({ ...prev, handle: user.name }));
+      }
+    }, [user?.name]);
 
   
     const {
@@ -251,6 +269,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile
 });
 
-{/* export default connect(null, { createProfile })(withRouter(CreateProfile)); */}
-{/* export default withRouter(connect(null, { createProfile })(CreateProfile)); */}
 export default withRouter(connect(mapStateToProps, { createProfile, getCurrentProfile })(EditProfile));
