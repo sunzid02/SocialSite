@@ -21,6 +21,7 @@ import EditProfile from "./components/profile-forms/EditProfile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
 import Alert from "./components/layout/Alert";
+import Profiles from './components/profiles/Profiles';
 
 
 
@@ -64,6 +65,7 @@ class App extends Component {
                 <Route path="/" element={<Landing />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/profiles" element={<Profiles />} />
 
                 {/* All private routes go under this */}
                 <Route element={<PrivateRoute />}>

@@ -17,8 +17,10 @@ class Navbar extends Component {
     const { isAuthenticated, user } = this.props.auth;
   
       const authLinks = (
-        <ul >
-          <li >
+        <ul>
+          <li><Link to="/profiles" className="nav-link">Developers</Link></li>              
+
+          <li>
             <Link className="nav-link" to="/feed">
               Post Feed
             </Link>
@@ -48,8 +50,10 @@ class Navbar extends Component {
       );
   
       const guestLinks = (
-        <ul >
-          <li >
+        <ul>
+          <li><Link to="/profiles" className="nav-link">Developers</Link></li>              
+
+          <li>
             <Link className="nav-link" to="/register">
               Sign Up
             </Link>
@@ -68,9 +72,7 @@ class Navbar extends Component {
           <h1>
               <Link to="/"> <i className="fas fa-code"></i> DevConnector </Link>
           </h1>
-          <ul>
-              <li><Link to="/profiles" className="nav-link">Developers</Link></li>              
-          </ul>
+
           { isAuthenticated ? authLinks: guestLinks }   
 
         </nav>   
