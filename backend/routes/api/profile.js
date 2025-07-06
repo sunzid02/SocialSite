@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
-// const keys = 
-
+const keys = require('../../config/keys');
+  
+const config = require('config');
+const request = require('request');
 
 const validateProfileInput =  require('../../validation/profile');
 const validateExperienceInput =  require('../../validation/experience');
@@ -347,6 +349,35 @@ router.delete('/', passport.authenticate('jwt', { session: false }), async (req,
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: 'Server error' });
+    }
+});
+
+
+//@route    GET api/profile/github/:userName
+//@desc     Get User Github Repo
+//@access   Public
+router.get('/github/:username', async (req, res) => {
+    try {
+      const options = {
+        uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc`,
+        headers: {
+          'user-agent': 'node.js',
+          Authorization: `token ${keys.githubtoken}`
+        },
+        method: 'GET'
+
+      };
+      request(options, (error, response, body) => {
+        if (error) console.error(error);
+  
+        if (response.statusCode !== 200) {
+          return res.status(404).json({ msg: 'No Github profile found' });
+        }
+        res.json(JSON.parse(body));
+      });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
     }
   });
 
