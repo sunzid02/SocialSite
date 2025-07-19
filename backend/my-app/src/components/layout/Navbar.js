@@ -19,12 +19,13 @@ class Navbar extends Component {
       const authLinks = (
         <ul>
           <li><Link to="/profiles" className="nav-link">Developers</Link></li>              
+          <li><Link to="/posts" className="nav-link">Posts</Link></li>              
 
-          <li>
+          {/* <li>
             <Link className="nav-link" to="/feed">
               Post Feed
             </Link>
-          </li>
+          </li> */}
           <li >
             <Link className="nav-link" to="/dashboard">
               Dashboard
