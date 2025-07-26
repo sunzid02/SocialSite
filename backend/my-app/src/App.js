@@ -25,6 +25,7 @@ import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 
 import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
 
 
 
@@ -79,6 +80,7 @@ class App extends Component {
                   <Route path="/add-experience" element={<AddExperience />} />
                   <Route path="/add-education" element={<AddEducation />} />
                   <Route path="/posts" element={<Posts />} />
+                  <Route path="/post/:id" element={<Post />} />
                 </Route>
               </Routes>
             </main>

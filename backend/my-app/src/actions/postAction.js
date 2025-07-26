@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { setAlert } from "./alertAction";
-import { ADD_POST, GET_POSTS, POST_ERROR, UPDATE_LIKES } from './types';
+import { ADD_POST, GET_POST, GET_POSTS, POST_ERROR, UPDATE_LIKES } from './types';
 
 //get posts
 export const getPosts = () => async dispatch => {
@@ -21,6 +21,28 @@ export const getPosts = () => async dispatch => {
         // dispatch(setAlert('Error fetching posts', 'danger'));
     }
 };
+
+//get post
+export const getPost = postId => async dispatch => {
+    try {
+        const res = await axios.get(`/api/posts/${postId}`);
+
+        dispatch({
+            type: GET_POST,
+            payload: res.data
+        });
+
+    } catch (err) {
+        dispatch({
+            type: POST_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+
+        // dispatch(setAlert('Error fetching posts', 'danger'));
+    }
+};
+
+
 
 //add like
 export const addLike = postId => async dispatch => {
