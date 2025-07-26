@@ -1,67 +1,144 @@
-# DevConnector – SocialSite (MERN Stack Project)
+# Dev Connector App
 
-A full-featured developer social network platform where developers can connect, share their professional experiences, showcase education, and build a public profile. This project is built as part of a **Backend Development and API Creation** course on Coursera, and further enhanced as a full **MERN stack** application.
+## Project Overview
 
-## 🔗 Live Demo
+Dev Connector is a social networking platform designed specifically for developers. It allows users to create profiles, share experiences, post content, and interact with other developers. The app is built using React for the frontend and Node.js with Express for the backend.
 
-*Deployment in progress — will be hosted on [Heroku](https://heroku.com) soon*
+## Features
 
-## 📂 Repository
+- User authentication and registration
+- Developer profiles with experience, education, and skills
+- Social features including posts, likes, and comments
+- Dashboard for managing user profile and posts
 
-This repository contains the full backend and frontend source code:
+## Technology Stack
 
-🔗 [GitHub Repository](https://github.com/sunzid02/SocialSite)
+### Frontend
 
----
+- React
+- Redux
+- Axios
+- Bootstrap
 
-## 📌 Features
+### Backend
 
-- User registration and login with JWT authentication
-- Secure password hashing using `bcrypt`
-- Protected routes with Passport.js
-- Create, update, and delete developer profiles
-- Add education and experience to profiles
-- Post and comment system
-- Like and unlike functionality for posts
-- MongoDB for data persistence
-- RESTful API structure
+- Node.js
+- Express
+- MongoDB
+- JWT Authentication
+- Passport.js
 
----
+## Directory Structure
 
-## 🛠️ Tech Stack
+### Frontend
 
-### Backend:
-- **Node.js**
-- **Express.js**
-- **MongoDB** with **Mongoose**
-- **JWT** for authentication
-- **Passport.js**
-- **bcryptjs**
+frontend/
+├── public/
+│ ├── index.html
+│ ├── favicon.ico
+│ └── manifest.json
+├── src/
+│ ├── actions/
+│ ├── components/
+│ ├── reducers/
+│ ├── App.js
+│ ├── index.js
+│ └── store.js
+├── package.json
+└── README.md
 
-### Frontend:
-- **React**
-- **Redux**
-- **React Router DOM**
-- **Axios**
-- (Frontend in progress)
+shell
+Copy
 
-### Deployment:
-- **Heroku** (planned)
-- **GitHub** for version control
+### Backend
 
----
+backend/
+├── config/
+│ ├── keys.js
+│ ├── passport.js
+│ └── production.json
+├── models/
+│ ├── Post.js
+│ ├── Profile.js
+│ └── User.js
+├── routes/
+│ └── api/
+│ ├── posts.js
+│ ├── profile.js
+│ └── users.js
+├── validation/
+├── server.js
+├── package.json
+└── package-lock.json
 
-## ⚙️ Getting Started
+perl
+Copy
+
+## Getting Started
 
 ### Prerequisites
 
-- Node.js and npm installed
-- MongoDB installed and running locally or using MongoDB Atlas
+Ensure you have installed:
 
-### Installation
+- Node.js and npm
+- MongoDB
 
-1. Clone the repository:
+### Installation and Setup
 
-```bash
-git clone https://github.com/sunzid02/SocialSite.git
-cd SocialSite
+#### Backend
+
+1. Navigate to the backend directory:
+    ```bash
+    cd backend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Configure MongoDB URI in `config/keys.js`:
+    ```javascript
+    module.exports = {
+        mongoURI: 'your_mongodb_connection_string',
+        secretOrKey: 'your_jwt_secret'
+    };
+    ```
+4. Start the backend server:
+    ```bash
+    npm run server
+    ```
+
+#### Frontend
+
+1. Navigate to the frontend directory:
+    ```bash
+    cd frontend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Run the React development server:
+    ```bash
+    npm start
+    ```
+
+## Usage
+
+After both the frontend and backend servers are running, navigate to `http://localhost:3000` in your browser to use the Dev Connector application.
+
+## Deployment
+
+- For frontend deployment, you can use platforms like Netlify or GitHub Pages.
+- Backend deployment can be done using platforms like Heroku or AWS.
+
+## Tutorial Acknowledgment
+
+This project was created by watching the **Advanced Frontend Development and Deployment** course on [Coursera](https://www.coursera.org/learn/packt-advanced-frontend-development-and-deployment-l9mi4). I would like to thank the instructor for providing this insightful and practical tutorial that guided me in building this app. The tutorial covered essential concepts and techniques, and it helped me implement the project with confidence.
+
+## Contributing
+
+Feel free to fork the repository and submit pull requests. Contributions, issues, and feature requests are welcome.
+
+## License
+
+This project is licensed under the MIT License.
