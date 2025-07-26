@@ -7,6 +7,7 @@ import Spinner from '../layout/Spinner'; // Uncomment if you want to show a spin
 import { useEffect, Fragment } from 'react';
 import PostItem from '../posts/PostItem';
 import CommentForm from './CommentForm';
+import CommentItem from './CommentItem';
 
 const Post = ({  getPost, post: {post, loading} }) => {
   const { id } = useParams(); // Get post ID from route
@@ -23,11 +24,13 @@ const Post = ({  getPost, post: {post, loading} }) => {
         Back to Posts
       </Link>
       <PostItem post={post} showActions={false} />
-      {/* Comments Section */}
-      <div className="comments">
-        <h3>Comments</h3>
-        <CommentForm postId={post._id} />
+      <CommentForm postId={post._id} />
 
+
+      {/* Comments Section */}
+        <h3>Comments</h3>
+
+      {/* <div className="comments">
         {post.comments && post.comments.length > 0 ? (
           post.comments.map(comment => (
             <div key={comment._id} className="comment" style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
@@ -44,7 +47,19 @@ const Post = ({  getPost, post: {post, loading} }) => {
         ) : (
           <p>No comments yet.</p>
         )}
+      </div> */}
+      <div className='comments'>
+        {post.comments && post.comments.length === 0 && <p>No comments yet.</p>}
+
+
+        {post.comments && post.comments.length > 0 && (
+          post.comments.map(comment => (
+            <CommentItem key={comment._id} comment={comment} postId={post._id} />
+          ))
+        )}
       </div>
+
+
     </Fragment>
   );
 

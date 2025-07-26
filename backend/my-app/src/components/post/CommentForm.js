@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { addComment } from '../../actions/postAction'
 
 
-const CommentForm = ({addComment, postId}) => {
+const CommentForm = ({addComment, postId, auth:{user: {name, avatar}}}) => {
   const [text, setText] = useState('');
 
 //   const onSubmit = e => {
@@ -20,7 +20,7 @@ const CommentForm = ({addComment, postId}) => {
         </div>
         <form className="my-1"  onSubmit={e => {
             e.preventDefault();
-            addComment(postId,  { text });
+            addComment(postId,  { text, name, avatar });
             setText('');
         }}>
           <textarea cols="30" rows="5" placeholder="Your comment"
@@ -28,6 +28,8 @@ const CommentForm = ({addComment, postId}) => {
             onChange={e => setText(e.target.value)}
           ></textarea>
           <br />
+          <input type="hidden" name="name" value={name} />
+          <input type="hidden" name="avatar" value={avatar} />
           <input type="submit" value="Submit" className="btn btn-dark my-1" />
         </form>
     </div>
@@ -38,4 +40,8 @@ CommentForm.propTypes = {
   addComment: PropTypes.func.isRequired
 }
 
-export default connect(null, { addComment })(CommentForm)
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { addComment })(CommentForm)
