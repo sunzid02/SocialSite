@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+# Dev Connector App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Overview
 
-## Available Scripts
+Dev Connector is a social networking platform designed specifically for developers. It allows users to create profiles, share experiences, post content, and interact with other developers. The app is built using React for the frontend and Node.js with Express for the backend.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- User authentication and registration
+- Developer profiles with experience, education, and skills
+- Social features including posts, likes, and comments
+- Dashboard for managing user profile and posts
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technology Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend
 
-### `npm test`
+- React
+- Redux
+- Axios
+- Bootstrap
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
 
-### `npm run build`
+- Node.js
+- Express
+- MongoDB
+- JWT Authentication
+- Passport.js
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Directory Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Frontend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+frontend/
+├── public/
+│ ├── index.html
+│ ├── favicon.ico
+│ └── manifest.json
+├── src/
+│ ├── actions/
+│ ├── components/
+│ ├── reducers/
+│ ├── App.js
+│ ├── index.js
+│ └── store.js
+├── package.json
+└── README.md
 
-### `npm run eject`
+shell
+Copy
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Backend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+backend/
+├── config/
+│ ├── keys.js
+│ ├── passport.js
+│ └── production.json
+├── models/
+│ ├── Post.js
+│ ├── Profile.js
+│ └── User.js
+├── routes/
+│ └── api/
+│ ├── posts.js
+│ ├── profile.js
+│ └── users.js
+├── validation/
+├── server.js
+├── package.json
+└── package-lock.json
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+perl
+Copy
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Getting Started
 
-## Learn More
+### Prerequisites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Ensure you have installed:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Node.js and npm
+- MongoDB
 
-### Code Splitting
+### Installation and Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Backend
 
-### Analyzing the Bundle Size
+1. Navigate to the backend directory:
+    ```bash
+    cd backend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Configure MongoDB URI in `config/keys.js`:
+    ```javascript
+    module.exports = {
+        mongoURI: 'your_mongodb_connection_string',
+        secretOrKey: 'your_jwt_secret'
+    };
+    ```
+4. Start the backend server:
+    ```bash
+    npm run server
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Frontend
 
-### Making a Progressive Web App
+1. Navigate to the frontend directory:
+    ```bash
+    cd frontend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Run the React development server:
+    ```bash
+    npm start
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Usage
 
-### Advanced Configuration
+After both the frontend and backend servers are running, navigate to `http://localhost:3000` in your browser to use the Dev Connector application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Deployment
 
-### Deployment
+- For frontend deployment, you can use platforms like Netlify or GitHub Pages.
+- Backend deployment can be done using platforms like Heroku or AWS.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Tutorial Acknowledgment
 
-### `npm run build` fails to minify
+This project was created by watching the **Advanced Frontend Development and Deployment** course on [Coursera](https://www.coursera.org/learn/packt-advanced-frontend-development-and-deployment-l9mi4). I would like to thank the instructor for providing this insightful and practical tutorial that guided me in building this app. The tutorial covered essential concepts and techniques, and it helped me implement the project with confidence.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing
+
+Feel free to fork the repository and submit pull requests. Contributions, issues, and feature requests are welcome.
+
+## License
+
+This project is licensed under the MIT License.
